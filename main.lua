@@ -565,18 +565,18 @@ function saveMaxEnergy(maxEnergy, fileName)
         file:close()
     end
 end
-
-function energy(rf)
-    if rf >= 1000000000000 then
-        return string.format("%.3f TRF/t", rf / 1000000000000)
-    elseif rf >= 1000000000 then
-        return string.format("%.3f GRF/t", rf / 1000000000)
-    elseif rf >= 1000000 then
-        return string.format("%.3f MRF/t", rf / 1000000)
-    elseif rf >= 1000 then
-        return string.format("%.3f kRF/t", rf / 1000)
+-- Поскольку у нас энергия в FE, поправил на FE
+function energy(fe)
+    if fe >= 1000000000000 then
+        return string.format("%.3f TFE/t", fe / 1000000000000)
+    elseif fe >= 1000000000 then
+        return string.format("%.3f GFE/t", fe / 1000000000)
+    elseif fe >= 1000000 then
+        return string.format("%.3f MFE/t", fe / 1000000)
+    elseif fe >= 1000 then
+        return string.format("%.3f kFE/t", fe / 1000)
     else
-        return string.format("%.3f RF/t", rf)
+        return string.format("%.3f FE/t", fe)
     end
 end
 
@@ -681,18 +681,18 @@ if MIN_COUNT_FLUID_DROP == 0 then
     saveFileData(FLUID_DROP_FILE, MIN_COUNT_FLUID_DROP)  -- сохраняем в файл
 end
 
-
-local function formatReactorEnergy(rf)
-    if rf >= 1000000000000 then
-        return string.format("%.2f TRF/t", rf / 1000000000000)
-    elseif rf >= 1000000000 then
-        return string.format("%.2f GRF/t", rf / 1000000000)
-    elseif rf >= 1000000 then
-        return string.format("%.2f MRF/t", rf / 1000000)
-    elseif rf >= 1000 then
-        return string.format("%.2f kRF/t", rf / 1000)
+-- Поскольку у нас энергия в FE, поправил на FE
+local function formatReactorEnergy(fe)
+    if fe >= 1000000000000 then
+        return string.format("%.2f TFE/t", fe / 1000000000000)
+    elseif fe >= 1000000000 then
+        return string.format("%.2f GFE/t", fe / 1000000000)
+    elseif fe >= 1000000 then
+        return string.format("%.2f MFE/t", fe / 1000000)
+    elseif fe >= 1000 then
+        return string.format("%.2f kFE/t", fe / 1000)
     else
-        return string.format("%.0f RF/t", rf)
+        return string.format("%.0f FE/t", fe)
     end
 end
 
